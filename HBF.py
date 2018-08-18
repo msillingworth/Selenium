@@ -17,13 +17,13 @@ def logMeIn():
     url = 'https://hbf.com.au/myhbf/login'
     driver.get(url)
     assert "HBF" in driver.title
-    memberNumber = 18392520
+    memberNumber = X
     member = driver.find_element_by_id('MemberNumber')
     member.clear()
     member.send_keys(memberNumber)
     password = driver.find_element_by_id('loginPassword')
     password.clear()
-    password.send_keys('Essendon2000')
+    password.send_keys('X')
     login = driver.find_element_by_id('btnMyHbfLoginDesktop')
     login.submit()
 
