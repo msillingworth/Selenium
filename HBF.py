@@ -4,15 +4,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait # available since 2.4.0
 from selenium.webdriver.support import expected_conditions as EC # available since 2.26.0
 
-
-
-
-
 # Create instance of a webdriver
 driver = webdriver.Chrome('/Applications/chromedriver')
 
 # Do some login
-
 def logMeIn():
     url = 'https://hbf.com.au/myhbf/login'
     driver.get(url)
@@ -26,8 +21,7 @@ def logMeIn():
     password.send_keys('X')
     login = driver.find_element_by_id('btnMyHbfLoginDesktop')
     login.submit()
-
-    
+   
 logMeIn()
     
 # Start a claim
@@ -46,17 +40,14 @@ def submitButton():
     button.submit()
 
 # Drag & Drop pdf receipt
-
 dropfile = driver.find_element_by_class_name('drop-box ng-pristine ng-untouched ng-valid ng-empty')
 #dropfile.send_keys(/path/filename)
 
 # Next button
 submitButton()
 
-
 # Submit a claim
 submitButton()
-
 
 # Close the browser
 driver.quit()
