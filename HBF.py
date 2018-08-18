@@ -1,42 +1,39 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait # available since 2.4.0
+from selenium.webdriver.support import expected_conditions as EC # available since 2.26.0
+
+
+
+
 
 # Create instance of a webdriver
 driver = webdriver.Chrome('/Applications/chromedriver')
 
-# Get the relevant webpage
-url = 'https://hbf.com.au'
-driver.get(url)
-assert "HBF" in driver.title
-
 # Do some login
 
 def logMeIn():
-    url = 'htttps://hbf.com.au/myhbf/login'
+    url = 'https://hbf.com.au/myhbf/login'
     driver.get(url)
     assert "HBF" in driver.title
-    userName = '18392520'
-    password = 'Essendon2000'
-    memberNumber = driver.find_element_by_id('memberNumber')
-    user.clear()
-    user.send_keys(memberNumber)
+    memberNumber = 18392520
+    member = driver.find_element_by_id('MemberNumber')
+    member.clear()
+    member.send_keys(memberNumber)
     password = driver.find_element_by_id('loginPassword')
     password.clear()
-    password.send_keys(password)
-    
+    password.send_keys('Essendon2000')
     login = driver.find_element_by_id('btnMyHbfLoginDesktop')
-    login.send_keys(Keys.Click)
-    # assert "HBF" in driver.url
+    login.submit()
+
     
 logMeIn()
     
 # Start a claim
 def startClaim():
-    claimId = 'hbf-make-claim'
-    claimElem = driver.find_element_by_id(claimId)
-    claimElem.clear()
-    claimElem.send_keys(Keys.Click)
-    assert 'No results found' not in driver.page_source
+    element = driver.find_element_by_class_name('hbf-btn hbf-btn--solid primary')
+    element.submit()
 
 startClaim()
 
@@ -46,7 +43,7 @@ startClaim()
 #Create Submit function
 def submitButton():
     button = driver.find_element_by_class_name('hbf-btn hbf-btn--solid primary myhbfNextButton')
-    button.send_keys(Keys.Click)
+    button.submit()
 
 # Drag & Drop pdf receipt
 
